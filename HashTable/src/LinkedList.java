@@ -1,5 +1,3 @@
-// Node e LinkedList
-
 class Node {
     Aluno aluno;
     Node next;
