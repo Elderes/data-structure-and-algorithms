@@ -48,7 +48,24 @@ public class LinkedList {
     }
 
     public String pegarValor(int matricula) {
-        Node current = head; //
+        Node current = head;
+        while (current != null) {
+            if (current.aluno.getMatricula() == matricula) {
+                return current.aluno.getNome();
+            }
+            current = current.next;
+        }
+        return null;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        Node current = head;
+        while (current != null) {
+            result.append(current.aluno).append(" -> ");
+            current = current.next;
+        }
+        return result.toString();
+    }
 }
