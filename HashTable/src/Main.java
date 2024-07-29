@@ -11,7 +11,7 @@ public class Main {
         // Inserindo valores
         tabela.inserirValor(aluno1);
         tabela.inserirValor(aluno2);
-        tabela.inserirValor(aluno3);
+//        tabela.inserirValor(aluno3);
 
         System.out.println("Tabela Hash após inserções:");
         System.out.println(tabela);

@@ -34,7 +34,7 @@ public class LinkedList {
 
         while (current != null) {
             if (current.aluno.getMatricula() == matricula) {
-                if (previous != null) { // Em caso de remoção do primeiro nó.
+                if (previous == null) { // Em caso de remoção do primeiro nó.
                     head = current.next; // O segundo nó passa a ser a cabeça da lista.
                 } else {
                     previous.next = current.next; // O nó anterior é "amarrado" com o próximo.
