@@ -1,9 +1,7 @@
-import java.util.LinkedList;
-
-class LinkedListCustom {
+class LinkedList {
     Node head;
     
-    public LinkedListCustom() {
+    public LinkedList() {
         this.head = null;
     }
 

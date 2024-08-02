@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        LinkedListCustom linkedlist = new LinkedListCustom();
+        LinkedList linkedlist = new LinkedList();
 
         linkedlist.addLast(5);
         linkedlist.addLast(4);

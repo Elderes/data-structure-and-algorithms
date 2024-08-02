@@ -6,5 +6,4 @@ public class Node {
         this.value = v;
         this.next = null;
     }
-
 }
