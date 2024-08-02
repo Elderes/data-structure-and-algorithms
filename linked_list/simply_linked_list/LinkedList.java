@@ -1,3 +1,15 @@
+package simply_linked_list;
+
+class Node {
+    public int value;
+    public Node next;
+
+    Node(int v) {
+        this.value = v;
+        this.next = null;
+    }
+}
+
 class LinkedList {
     Node head;
     

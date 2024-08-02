@@ -1,3 +1,5 @@
+package hash_table_chained;
+
 public class Aluno {
     int matricula;
     String nome;
@@ -25,6 +27,6 @@ public class Aluno {
 
     @Override
     public String toString() {
-        return "Aluno(matrúcla = " + matricula + ", nome = " + nome + ")";
+        return "Aluno(matricula = " + matricula + ", nome = " + nome + ")";
     }
 }

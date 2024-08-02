@@ -1,4 +1,16 @@
-public class LinkedList {
+package hash_table_chained;
+
+class Node {
+    Aluno aluno;
+    Node next;
+
+    public Node(Aluno aluno) {
+        this.aluno = aluno;
+        this.next = null;
+    }
+}
+
+class LinkedList {
     private Node head;
 
     public LinkedList() {
@@ -46,16 +58,5 @@ public class LinkedList {
             current = current.next;
         }
         return null;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder result = new StringBuilder();
-        Node current = head;
-        while (current != null) {
-            result.append(current.aluno).append(" -> ");
-            current = current.next;
-        }
-        return result.toString();
     }
 }

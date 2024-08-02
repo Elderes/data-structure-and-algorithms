@@ -1,3 +1,5 @@
+package hash_table_chained;
+
 public class HashTable {
     private int tamanho;
     private LinkedList[] tabela;

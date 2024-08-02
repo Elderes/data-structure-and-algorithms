@@ -1,6 +1,8 @@
+package simply_linked_list;
+
 public class Main {
     public static void main(String[] args) {
-        LinkedList linkedlist = new LinkedList();
+        final LinkedList linkedlist = new LinkedList();
 
         linkedlist.addLast(5);
         linkedlist.addLast(4);

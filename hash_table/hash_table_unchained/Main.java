@@ -1,6 +1,7 @@
-public class App {
+package hash_table_unchained;
+public class Main {
     public static void main(String[] args) throws Exception {
-        TabelaHash tabela = new TabelaHash(5);
+        HashTable tabela = new HashTable(5);
 
         tabela.inserirValor(1, "Alice");
         tabela.inserirValor(2, "Bob");
