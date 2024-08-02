@@ -1,8 +1,8 @@
-public class TabelaHash {
+public class HashTable {
     private int tamanho;
     private LinkedList[] tabela;
 
-    public TabelaHash(int tamanho) {
+    public HashTable(int tamanho) {
         this.tamanho = tamanho;
         tabela = new LinkedList[tamanho];
         for (int i = 0; i < tamanho; i++) {
