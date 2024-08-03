@@ -2,7 +2,7 @@ package hash_table_chained;
 
 public class HashTable {
     private int tamanho;
-    private LinkedList[] tabela;
+    private LinkedList[] tabela; // Uma tabela de listas encadeadas. Cada índice corresponde a uma lista encadeada.
 
     public HashTable(int tamanho) {
         this.tamanho = tamanho;
@@ -18,6 +18,9 @@ public class HashTable {
 
     public void inserirValor(Aluno aluno) {
         int indice = calcularHash(aluno.getMatricula());
+        if (tabela[indice] == null) {
+            tabela[indice] = new LinkedList();
+        }
         tabela[indice].inserir(aluno);
     }
 
@@ -28,15 +31,18 @@ public class HashTable {
 
     public String pegarValor(int matricula) {
         int indice = calcularHash(matricula);
-        return tabela[indice].pegarValor(matricula);
+        return tabela[indice].pegar(matricula);
     }
 
-    @Override
-    public String toString() {
+    public void exibirValores() {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < tamanho; i++) {
-            result.append(i).append(": ").append(tabela[i]).append("\n");
+            if (tabela[i] == null) {
+                result.append(i).append(": ").append("\n");
+            } else {
+                result.append(i).append(": ").append(tabela[i].exibir()).append("\n");
+            }
         }
-        return result.toString();
+        System.out.println(result);
     }
 }

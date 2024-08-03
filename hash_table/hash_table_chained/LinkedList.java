@@ -11,22 +11,23 @@ class Node {
 }
 
 class LinkedList {
-    private Node head;
+    Node head;
 
     public LinkedList() {
         this.head = null;
     }
 
     public void inserir(Aluno aluno) {
-        Node newNode = new Node(aluno);
+        Node new_node = new Node(aluno); // Armazena o novo aluno em um novo nó, que ainda não foi encadeado (nenhum nó aponta para esse novo nó).
+
         if (head == null) {
-            head = newNode;
+            head = new_node;
         } else {
             Node current = head;
-            while (head != null) {
+            while (current.next != null) { // Precisa checar se existe um endereço para próximo.
                 current = current.next;
             }
-            current.next = newNode;
+            current.next = new_node; // Agora o último nó da lista (current) aponta para o novo nó (new_node).
         }
     }
 
@@ -49,8 +50,9 @@ class LinkedList {
         return false; // Caso a matrícula não seja encontrada na lista.
     }
 
-    public String pegarValor(int matricula) {
+    public String pegar(int matricula) {
         Node current = head;
+        
         while (current != null) {
             if (current.aluno.getMatricula() == matricula) {
                 return current.aluno.getNome();
@@ -58,5 +60,16 @@ class LinkedList {
             current = current.next;
         }
         return null;
+    }
+
+    public String exibir() {
+        Node current = head;
+        StringBuilder result = new StringBuilder();
+
+        while (current != null) {
+            result.append(current.aluno.getMatricula()).append(" ");
+            current = current.next;
+        }
+        return result.toString();
     }
 }
