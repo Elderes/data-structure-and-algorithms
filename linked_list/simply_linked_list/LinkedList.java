@@ -35,17 +35,39 @@ class LinkedList {
         }
     }
 
-    public void add(int pos, int value) {
-        
+    public int getSize() {
+        Node current = this.head;
+        int size = 0;
+        while (current != null) {
+            current = current.next;
+            size++;
+        }
+        return size;
     }
 
-    public void print() {
-        Node curr = this.head;
-        while (curr != null) {
-            System.out.print(curr.value);
-            System.out.print(", ");
-            curr = curr.next;
+    public void add(int pos, int value) {
+        Node current = this.head;
+        int counter = 0;
+        if (pos <= getSize()) {
+            while (counter != pos) {
+                current = current.next;
+                counter++;
+            }
+            Node newNode = new Node(value);
+            newNode.next = current.next;
+            current.next = newNode;
+        } else {
+            System.out.println("Invalid index.");
         }
-        System.out.print("\b");
+    }
+
+    public void printElements() {
+        Node current = this.head;
+        int counter = 0;
+        while (current != null) {
+            System.out.println(counter + ". " + current.value);
+            current = current.next;
+            counter++;
+        }
     }
 }
