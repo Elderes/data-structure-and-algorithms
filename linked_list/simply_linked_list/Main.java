@@ -8,6 +8,6 @@ public class Main {
         linkedlist.addLast(4);
         linkedlist.addLast(2);
         linkedlist.addFirst(0);
-        linkedlist.print();
+        linkedlist.printElements();
     }
 }
