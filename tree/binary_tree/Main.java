@@ -13,5 +13,7 @@ public class Main {
         arvore.adicionar(7);
 
         arvore.atravessaEmOrdem(arvore.raiz);
+
+        System.out.println(arvore.verificarExistencia(arvore.raiz, 6));
     }
 }

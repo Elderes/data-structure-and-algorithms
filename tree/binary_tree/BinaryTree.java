@@ -39,12 +39,26 @@ public class BinaryTree {
         return current;
     }
 
-    void removerPrimeiro() {
+    boolean verificarExistencia(Node current, int v) {
+        if (current == null) {
+            return false;
+        }
+        if (current.value == v) {
+            return true;
+        }
+        if (v > current.value) {
+            return verificarExistencia(current.filhoDireita, v);
+        } else {
+            return verificarExistencia(current.filhoEsquerda, v);
+        }
+    } 
+
+    void removerMaior() {
         
     }
 
-    void removerUltimo() {
-        raiz = null;
+    void removerMenor() {
+
     }
 
     void atravessaEmOrdem(Node node) {
