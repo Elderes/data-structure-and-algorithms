@@ -54,11 +54,39 @@ public class BinaryTree {
     } 
 
     void removerMaior() {
+        raiz = removerMaiorRecursivo(raiz);
+    }
+
+    private Node removerMaiorRecursivo(Node current) {
+        if (current == null) {
+            return null;
+        }
+
+        if (current.filhoDireita == null) {
+            return current.filhoEsquerda;
+        }
+
+        current.filhoDireita = removerMaiorRecursivo(current.filhoDireita);
         
+        return current;
     }
 
     void removerMenor() {
+        raiz = removerMenorRecursivo(raiz);
+    }
 
+    private Node removerMenorRecursivo(Node current) {
+        if (current == null) {
+            return null;
+        }
+
+        if (current.filhoDireita == null) {
+            return current.filhoDireita;
+        }
+
+        current.filhoEsquerda = removerMaiorRecursivo(current.filhoEsquerda);
+        
+        return current;
     }
 
     void atravessaEmOrdem(Node node) {
@@ -69,5 +97,21 @@ public class BinaryTree {
             atravessaEmOrdem(node.filhoDireita);
         }
     }
+
+    void atravessarEmPreOrder(Node node) {
+        if (node != null) {
+            System.out.println(" " + node.value);
+            atravessarEmPreOrder(node.filhoEsquerda);
+            atravessarEmPreOrder(node.filhoDireita);
+        }
+    }
+    
+    void atravessarEmPosOrder(Node node) {
+        if (node != null) {
+            atravessarEmPosOrder(node.filhoEsquerda);
+            atravessarEmPosOrder(node.filhoDireita);
+            System.out.println(" " + node.value);
+        }
+    } 
 
 }
