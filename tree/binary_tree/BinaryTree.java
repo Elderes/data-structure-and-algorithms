@@ -24,9 +24,8 @@ public class BinaryTree {
     }
 
     private Node adicionarRecursivo(Node current, int v) {
-        // Chamadas recursivas. A função chama ela mesma até que respeite uma das condições.
         if (current == null) {
-            return new Node(v); // A adição do novo nó sempre acontece aqui, quando o valor atual está vazio.
+            return new Node(v); // A adição do novo nó acontece aqui quando o valor atual está vazio.
         }
 
         if (v < current.value) { // Percorre a árvore, decidindo entre o caminho da esquerda ou direita.
@@ -47,14 +46,14 @@ public class BinaryTree {
             return true;
         }
         if (v > current.value) {
-            return verificarExistencia(current.filhoDireita, v);
+            return verificarExistencia(current.filhoDireita, v); // A função é chamada novamente até que caia em uma das duas primeiras condições.
         } else {
             return verificarExistencia(current.filhoEsquerda, v);
         }
     } 
 
     void removerMaior() {
-        raiz = removerMaiorRecursivo(raiz);
+        raiz = removerMaiorRecursivo(raiz); // Atribui a raíz (que passará a ser o nó atual) pelo valor retornado da função, que recebe a própria raíz como argumento na chamada.
     }
 
     private Node removerMaiorRecursivo(Node current) {
@@ -80,17 +79,16 @@ public class BinaryTree {
             return null;
         }
 
-        if (current.filhoDireita == null) {
+        if (current.filhoEsquerda == null) {
             return current.filhoDireita;
         }
 
-        current.filhoEsquerda = removerMaiorRecursivo(current.filhoEsquerda);
+        current.filhoEsquerda = removerMenorRecursivo(current.filhoEsquerda); 
         
         return current;
     }
 
     void atravessaEmOrdem(Node node) {
-        // Chamadas recursivas novamente. Percorre a árvore para exibir os valores nos nós.
         if (node != null) {
             atravessaEmOrdem(node.filhoEsquerda);
             System.out.println(" " + node.value);
