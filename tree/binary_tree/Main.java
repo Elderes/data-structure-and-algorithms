@@ -13,7 +13,22 @@ public class Main {
         arvore.adicionar(7);
 
         arvore.atravessaEmOrdem(arvore.raiz);
+        System.out.println();
+        arvore.atravessarEmPosOrder(arvore.raiz);
+        System.out.println();
+        arvore.atravessarEmPreOrder(arvore.raiz);
+        System.out.println();
 
         System.out.println(arvore.verificarExistencia(arvore.raiz, 6));
+
+        System.out.println();
+        
+        arvore.removerMaior();
+        arvore.atravessaEmOrdem(arvore.raiz);
+
+        System.out.println();
+
+        arvore.removerMenor();
+        arvore.atravessaEmOrdem(arvore.raiz);
     }
 }
