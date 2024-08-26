@@ -95,16 +95,17 @@ public class AVLTree {
         return rebalance(current);
     }
 
-    Node remove(Node toRemove) {
-        Node current = root;
-        if (toRemove == current.right) {
-            Node newLeft = current.right.left;
-            current.right.right = current.right; // Neto da direita passa a ser o filho a direita.
-            current.right.left = newLeft; // Antes irmão passa a ser filho a esquerda.
-        } else if (toRemove == current.left) {
-            Node newLeft = current.right.left;
-            current.right.right = current.right; // Neto da direita passa a ser o filho a direita.
-            current.right.left = newLeft; // Antes irmão passa a ser filho a esquerda.
+    Node remove(Node root, int key) {
+        if (root == null) {
+            return root;
+        }
+        
+        if (key < root.key) {
+            root.left = remove(root.left, key);
+        }
+        else if (key > root.key) {
+            root.right = remove(root.right, key);
         }
     }
+    
 }
