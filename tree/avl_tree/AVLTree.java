@@ -11,7 +11,7 @@ class Node {
 }
 
 public class AVLTree {
-    private Node root;
+    Node root;
     
     /* Retorna a altura da árvore. */
     int height(Node n) {
@@ -30,6 +30,13 @@ public class AVLTree {
 
     int getBalance(Node n) {
         return (n == null) ? 0 : height(n.right) - height(n.left);
+    }
+
+    Node findMin(Node n) {
+        while (n.left != null) {
+            n = n.left;
+        }
+        return n;
     }
 
     // https://www.baeldung.com/java-avl-trees
@@ -56,7 +63,7 @@ public class AVLTree {
         updateHeight(y);
         updateHeight(x);
         
-        return x;
+        return y;
     }
 
     // Tendo como base subárvore esquerda - subárvore direita.
@@ -95,16 +102,51 @@ public class AVLTree {
         return rebalance(current);
     }
 
-    Node remove(Node root, int key) {
-        if (root == null) {
-            return root;
+    Node remove(Node current, int key) {
+        if (current == null) {
+            return current;
         }
         
-        if (key < root.key) {
-            root.left = remove(root.left, key);
+        if (key < current.key) {
+            current.left = remove(current.left, key);
         }
-        else if (key > root.key) {
-            root.right = remove(root.right, key);
+
+        else if (key > current.key) {
+            current.right = remove(current.right, key);
+        }
+        
+        else {
+            // Caso 1: Nó sem filhos (nó folha).
+            if (current.left == null && current.right == null) {
+                current = null;
+            }
+            // Caso 2: Nó tem um único filho.
+            else if (current.right == null) {
+                current = current.left;
+            } 
+            else if (current.left == null) {
+                current = current.right;
+            }
+            // Caso 3: Nó com dois filhos.
+            else {
+                Node temp = findMin(current.right);
+                current.key = temp.key;
+                current.right = remove(current.right, temp.key);
+            }
+        }
+
+        if (current == null) {
+            return null;
+        }
+
+        return rebalance(current);
+    }
+
+    void preOrder(Node node) {
+        if (node != null) {
+            System.out.print(node.key + " ");
+            preOrder(node.left);
+            preOrder(node.right);
         }
     }
     
